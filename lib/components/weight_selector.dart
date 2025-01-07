@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bmi_calculator/components/button1.dart';
+import 'package:bmi_calculator/controllers/bmi_controller.dart';
 import 'package:flutter/material.dart';
 
 class WeightSelector extends StatefulWidget {
@@ -11,6 +12,23 @@ class WeightSelector extends StatefulWidget {
 }
 
 class _WeightSelectorState extends State<WeightSelector> {
+  final BMIController bmiController = Get.put(BMIController());
+  bool isEditing = false;
+  late TextEditingController _textEditingController;
+
+  @override
+  void initState() {
+    super.initState();
+    _textEditingController =
+        TextEditingController(text: bmiController.weight.value.toString());
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
