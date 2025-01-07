@@ -1,5 +1,7 @@
 import 'package:bmi_calculator/components/button1.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:bmi_calculator/controllers/bmi_controller.dart';
 
 class WeightSelector extends StatefulWidget {
   const WeightSelector({super.key});
@@ -9,6 +11,23 @@ class WeightSelector extends StatefulWidget {
 }
 
 class _WeightSelectorState extends State<WeightSelector> {
+  final BMIController bmiController = Get.put(BMIController());
+  bool isEditing = false;
+  late TextEditingController _textEditingController;
+
+  @override
+  void initState() {
+    super.initState();
+    _textEditingController =
+        TextEditingController(text: bmiController.weight.value.toString());
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -45,12 +64,46 @@ class _WeightSelectorState extends State<WeightSelector> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "60",
-                  style: TextStyle(
-                    fontSize: 90, // Kurangi jika masih overflow
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                Flexible(
+                  child: Obx(
+                    () => GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isEditing = true;
+                        });
+                      },
+                      child: isEditing
+                          ? SizedBox(
+                              width: 100,
+                              child: TextField(
+                                controller: _textEditingController,
+                                keyboardType: TextInputType.number,
+                                style: TextStyle(
+                                  fontSize: 70, // Kurangi ukuran font
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                ),
+                                onSubmitted: (value) {
+                                  final newWeight = int.tryParse(value);
+                                  if (newWeight != null) {
+                                    bmiController.weight.value = newWeight;
+                                  }
+                                  setState(() {
+                                    isEditing = false;
+                                  });
+                                },
+                              ),
+                            )
+                          : Text(
+                              "${bmiController.weight.value}",
+                              style: TextStyle(
+                                fontSize: 90, // Kurangi jika masih overflow
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
+                            ),
+                    ),
                   ),
                 ),
               ],
@@ -60,11 +113,23 @@ class _WeightSelectorState extends State<WeightSelector> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 PrimaryButton(
-                  onpress: () {},
+                  onpress: () {
+                    bmiController.weight.value++;
+                  },
                   icon: Icons.add,
                 ),
                 PrimaryButton(
-                  onpress: () {},
+                  onpress: () {
+                    if (bmiController.weight.value > 0) {
+                      bmiController.weight.value--;
+                    } else {
+                      Get.snackbar(
+                        "Invalid Action",
+                        "Weight cannot be less than 0",
+                        snackPosition: SnackPosition.BOTTOM,
+                      );
+                    }
+                  },
                   icon: Icons.remove,
                 ),
               ],
