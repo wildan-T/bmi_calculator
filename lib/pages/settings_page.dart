@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:uas_bmi_calculator/Controllers/ThemeController.dart';
+import 'package:bmi_calculator/controllers/theme_controller.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
