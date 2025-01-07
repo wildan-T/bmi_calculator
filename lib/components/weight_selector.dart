@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bmi_calculator/components/button1.dart';
+import 'package:bmi_calculator/controllers/bmi_controller.dart';
+import 'package:flutter/material.dart';
 
 class WeightSelector extends StatefulWidget {
   const WeightSelector({super.key});
@@ -10,14 +12,15 @@ class WeightSelector extends StatefulWidget {
 }
 
 class _WeightSelectorState extends State<WeightSelector> {
+  final BMIController bmiController = Get.put(BMIController());
   bool isEditing = false;
   late TextEditingController _textEditingController;
-  final weight = 65.obs;
 
   @override
   void initState() {
     super.initState();
-    _textEditingController = TextEditingController();
+    _textEditingController =
+        TextEditingController(text: bmiController.weight.value.toString());
   }
 
   @override
@@ -62,44 +65,12 @@ class _WeightSelectorState extends State<WeightSelector> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Flexible(
-                  child: Obx(
-                    () => GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isEditing = true;
-                        });
-                      },
-                      child: isEditing
-                          ? SizedBox(
-                              width: 100,
-                              child: TextField(
-                                controller: _textEditingController,
-                                keyboardType: TextInputType.number,
-                                style: TextStyle(
-                                  fontSize: 70, // Kurangi ukuran font
-                                  fontWeight: FontWeight.bold,
-                                  color:
-                                      Theme.of(context).colorScheme.onSurface,
-                                ),
-                                onSubmitted: (value) {
-                                  final newWeight = int.tryParse(value);
-                                  if (newWeight != null) {}
-                                  setState(() {
-                                    isEditing = false;
-                                  });
-                                },
-                              ),
-                            )
-                          : Text(
-                              "${weight.value}",
-                              style: TextStyle(
-                                fontSize: 90, // Kurangi jika masih overflow
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
-                            ),
-                    ),
+                Text(
+                  "60",
+                  style: TextStyle(
+                    fontSize: 90, // Kurangi jika masih overflow
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
                 ),
               ],
@@ -109,11 +80,23 @@ class _WeightSelectorState extends State<WeightSelector> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 PrimaryButton(
-                  onpress: () {},
+                  onpress: () {
+                    bmiController.weight.value++;
+                  },
                   icon: Icons.add,
                 ),
                 PrimaryButton(
-                  onpress: () {},
+                  onpress: () {
+                    if (bmiController.weight.value > 0) {
+                      bmiController.weight.value--;
+                    } else {
+                      Get.snackbar(
+                        "Invalid Action",
+                        "Weight cannot be less than 0",
+                        snackPosition: SnackPosition.BOTTOM,
+                      );
+                    }
+                  },
                   icon: Icons.remove,
                 ),
               ],

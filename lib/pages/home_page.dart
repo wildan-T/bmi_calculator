@@ -1,10 +1,14 @@
 import 'package:bmi_calculator/components/button2.dart';
+import 'package:bmi_calculator/controllers/bmi_controller.dart';
 import 'package:bmi_calculator/components/height_selector.dart';
 import 'package:bmi_calculator/components/weight_selector.dart';
+import 'package:bmi_calculator/pages/results_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+  final BMIController bmiController = Get.put(BMIController());
 
  void onSelected(BuildContext context, int item) {
     switch (item) {
@@ -95,7 +99,7 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 64),
+                          const SizedBox(height: 30),
                           WeightSelector(),
                         ],
                       ),
@@ -107,7 +111,10 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               ButtonCheck(
-                onPress: () {},
+                onPress: () {
+                  bmiController.CalculatBMI();
+                  Get.to(() => ResultPage());
+                },
                 icon: Icons.done,
                 btnName: "Check",
               ),
