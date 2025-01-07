@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                               tileMode: TileMode.mirror,
                             ).createShader(bounds),
                             child: Text(
-                              "Maintain your body's balance, because having an ideal weight is the key to living a healthy, energetic, and confident life! Let's take small steps today with the BMI app.",
+                              "Maintain your ideal weight for a healthier, more energetic, and confident life. Start your journey today with the BMI app.",
                               style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
@@ -68,7 +68,7 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 50),
+                          const SizedBox(height: 64),
                           WeightSelector(),
                         ],
                       ),
