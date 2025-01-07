@@ -6,6 +6,15 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+ void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => SettingsPage()),
+        );
+        break;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +24,25 @@ class HomePage extends StatelessWidget {
           'Home',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        actions: [
+          PopupMenuButton<int>(
+            onSelected: (item) => onSelected(context, item),
+            icon: Icon(Icons.more_vert, color: Colors.white),
+            itemBuilder: (context) => [
+              PopupMenuItem<int>(
+                value: 0,
+                child: Row(
+                  children: [
+                    Icon(Icons.settings),
+                    SizedBox(width: 8),
+                    Text('Settings'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(
