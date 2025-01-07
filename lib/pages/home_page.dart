@@ -3,6 +3,7 @@ import 'package:bmi_calculator/controllers/bmi_controller.dart';
 import 'package:bmi_calculator/components/height_selector.dart';
 import 'package:bmi_calculator/components/weight_selector.dart';
 import 'package:bmi_calculator/pages/results_page.dart';
+import 'package:bmi_calculator/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
