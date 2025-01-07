@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bmi_calculator/components/button1.dart';
 import 'package:bmi_calculator/controllers/bmi_controller.dart';
-import 'package:flutter/material.dart';
 
 class WeightSelector extends StatefulWidget {
   const WeightSelector({super.key});
