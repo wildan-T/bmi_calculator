@@ -37,26 +37,26 @@ class BMIController extends GetxController {
 
   void findStatus() {
     if (tempBMI.value < 18.5) {
-      BMIstatus.value = "UNDERWEIGHT";
+      BMIstatus.value = "underweight".tr;
       // colorStatus.value = Color(0xffFFB700);
       colorStatus.value = Color(0xffFFA726);
     } else if (tempBMI.value >= 18.5 && tempBMI.value <= 24.9) {
-      BMIstatus.value = "NORMAL";
+      BMIstatus.value = "normal".tr;
       // colorStatus.value = Color(0xff00CA39);
       colorStatus.value = Color(0xff66BB6A);
     } //18.5 sampai 24.9
     else if (tempBMI.value >= 25.0 && tempBMI.value <= 29.9) {
-      BMIstatus.value = "OVERWEIGHT";
+      BMIstatus.value = "overweight".tr;
       // colorStatus.value = Color(0xffFEB200);
       colorStatus.value = Color(0xffFFEE58);
     } //25.0 sampai 29.9
     else if (tempBMI.value >= 30.5 && tempBMI.value <= 34.9) {
-      BMIstatus.value = "OBESE";
+      BMIstatus.value = "obese".tr;
       // colorStatus.value = Color(0xffBF6300);
       colorStatus.value = Color(0xffEF5350);
     } //30.5 sampai 34.9
     else if (tempBMI.value >= 35.0) {
-      BMIstatus.value = "EXTREMELY OBESE";
+      BMIstatus.value = "extremelyObese".tr;
       // colorStatus.value = Color(0xffC90000);
       colorStatus.value = Color(0xffB71C1C);
     }

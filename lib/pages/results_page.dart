@@ -23,7 +23,7 @@ class ResultPage extends StatelessWidget {
                 children: [
                   Obx(
                     () => Text(
-                      "Your BMI is",
+                      "title".tr,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 30,
@@ -88,17 +88,25 @@ class ResultPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Your BMI is ${bmiController.BMI.value}, which indicates your weight is in the ${bmiController.BMIstatus.value} category for adults of your height.",
+                        "result1".tr,
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      Text(
+                        "${bmiController.BMIstatus.value}",
                         style: TextStyle(fontSize: 15),
                       ),
                       SizedBox(height: 10),
                       Text(
-                        "A normal weight range for your height is: ${bmiController.recommendedWeightRange.value}.",
+                        "result2".tr,
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      Text(
+                        "${bmiController.recommendedWeightRange.value}",
                         style: TextStyle(fontSize: 15),
                       ),
                       SizedBox(height: 10),
                       Text(
-                        "Maintaining a healthy weight can help reduce the risk of chronic diseases associated with overweight and obesity.",
+                        "result3".tr,
                         style: TextStyle(fontSize: 15),
                       ),
                     ],
@@ -111,7 +119,7 @@ class ResultPage extends StatelessWidget {
                   Get.back();
                 },
                 icon: Icons.arrow_back_ios_new_outlined,
-                btnName: "Let's Check Again",
+                btnName: "cek2".tr,
               ),
             ],
           ),

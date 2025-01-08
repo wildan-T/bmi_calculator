@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/config/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bmi_calculator/config/theme.dart';
@@ -14,11 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      locale: Locale('gb', 'US'),
+      fallbackLocale: Locale('gb', 'US'),
+      translations: Languages(),
+
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.light, // Paksa mode terang
       debugShowCheckedModeBanner: false,
-      title: 'BMI Calculator',
+      title: 'bmiCalculator'.tr,
       home: HomePage(),
     );
   }

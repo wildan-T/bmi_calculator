@@ -30,7 +30,7 @@ class HeightSelector extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Height (Cm)",
+                  "height".tr,
                   style: TextStyle(
                     fontSize: 18,
                     color: Theme.of(context).colorScheme.onSecondaryContainer,
