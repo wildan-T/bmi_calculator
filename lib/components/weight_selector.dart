@@ -61,7 +61,10 @@ class _WeightSelectorState extends State<WeightSelector> {
               ],
             ),
             SizedBox(height: 30),
-            Flexible(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
                   child: Obx(
                     () => GestureDetector(
                       onTap: () {
