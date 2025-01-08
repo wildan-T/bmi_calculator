@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
   final BMIController bmiController = Get.put(BMIController());
 
- void onSelected(BuildContext context, int item) {
+  void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
         Navigator.of(context).push(
@@ -20,13 +20,14 @@ class HomePage extends StatelessWidget {
         break;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          'Home',
+          'home'.tr,
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -41,7 +42,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     Icon(Icons.settings),
                     SizedBox(width: 8),
-                    Text('Settings'),
+                    Text('settings1'.tr),
                   ],
                 ),
               ),
@@ -57,10 +58,10 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Welcome",
+                    "welcome".tr,
                     style: TextStyle(
                       fontSize: 28,
-                      color:Theme.of(context).colorScheme.onSecondaryContainer,
+                      color: Theme.of(context).colorScheme.onSecondaryContainer,
                     ),
                   )
                 ],
@@ -68,11 +69,11 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "BMI Calculator",
+                    "bmiCalculator".tr,
                     style: TextStyle(
                       fontSize: 34,
                       fontWeight: FontWeight.bold,
-                      color:  Theme.of(context).colorScheme.onSurface,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   )
                 ],
@@ -92,7 +93,7 @@ class HomePage extends StatelessWidget {
                               tileMode: TileMode.mirror,
                             ).createShader(bounds),
                             child: Text(
-                              "Maintain your ideal weight for a healthier, more energetic, and confident life. Start your journey today with the BMI app.",
+                              "deskripsi".tr,
                               style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
@@ -117,7 +118,7 @@ class HomePage extends StatelessWidget {
                   Get.to(() => ResultPage());
                 },
                 icon: Icons.done,
-                btnName: "Check",
+                btnName: "check".tr,
               ),
             ],
           ),

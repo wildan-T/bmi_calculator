@@ -53,7 +53,7 @@ class _WeightSelectorState extends State<WeightSelector> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Weight (Kg)",
+                  "weight".tr,
                   style: TextStyle(
                     fontSize: 18,
                     color: Theme.of(context).colorScheme.onSecondaryContainer,
@@ -125,8 +125,8 @@ class _WeightSelectorState extends State<WeightSelector> {
                       bmiController.weight.value--;
                     } else {
                       Get.snackbar(
-                        "Invalid Action",
-                        "Weight cannot be less than 0",
+                        "invalid".tr,
+                        "remaks".tr,
                         snackPosition: SnackPosition.BOTTOM,
                       );
                     }
