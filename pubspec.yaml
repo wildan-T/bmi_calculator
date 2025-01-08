@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.16
   percent_indicator: ^4.2.4
   cupertino_icons: ^1.0.8
   get: ^4.6.6

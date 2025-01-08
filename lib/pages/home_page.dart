@@ -3,6 +3,7 @@ import 'package:bmi_calculator/controllers/bmi_controller.dart';
 import 'package:bmi_calculator/components/height_selector.dart';
 import 'package:bmi_calculator/components/weight_selector.dart';
 import 'package:bmi_calculator/pages/results_page.dart';
+import 'package:bmi_calculator/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,15 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
   final BMIController bmiController = Get.put(BMIController());
 
+ void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => SettingsPage()),
+        );
+        break;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +29,25 @@ class HomePage extends StatelessWidget {
           'Home',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        actions: [
+          PopupMenuButton<int>(
+            onSelected: (item) => onSelected(context, item),
+            icon: Icon(Icons.more_vert, color: Colors.white),
+            itemBuilder: (context) => [
+              PopupMenuItem<int>(
+                value: 0,
+                child: Row(
+                  children: [
+                    Icon(Icons.settings),
+                    SizedBox(width: 8),
+                    Text('Settings'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -32,7 +60,7 @@ class HomePage extends StatelessWidget {
                     "Welcome",
                     style: TextStyle(
                       fontSize: 28,
-                      color: Colors.grey,
+                      color:Theme.of(context).colorScheme.onSecondaryContainer,
                     ),
                   )
                 ],
@@ -44,7 +72,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 34,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color:  Theme.of(context).colorScheme.onSurface,
                     ),
                   )
                 ],

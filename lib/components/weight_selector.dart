@@ -35,7 +35,7 @@ class _WeightSelectorState extends State<WeightSelector> {
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.primaryContainer,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.2),
@@ -55,7 +55,7 @@ class _WeightSelectorState extends State<WeightSelector> {
                   "Weight (Kg)",
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.grey,
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,  
                   ),
                 ),
               ],
@@ -64,16 +64,48 @@ class _WeightSelectorState extends State<WeightSelector> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "60",
-                  style: TextStyle(
-                    fontSize: 90, // Kurangi jika masih overflow
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                Flexible(
+                  child: Obx(
+                    () => GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isEditing = true;
+                        });
+                      },
+                      child: isEditing
+                          ? SizedBox(
+                              width: 100,
+                              child: TextField(
+                                controller: _textEditingController,
+                                keyboardType: TextInputType.number,
+                                style: TextStyle(
+                                  fontSize: 70, // Kurangi ukuran font
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                ),
+                                onSubmitted: (value) {
+                                  final newWeight = int.tryParse(value);
+                                  if (newWeight != null) {
+                                    bmiController.weight.value = newWeight;
+                                  }
+                                  setState(() {
+                                    isEditing = false;
+                                  });
+                                },
+                              ),
+                            )
+                          : Text(
+                              "${bmiController.weight.value}",
+                              style: TextStyle(
+                                fontSize: 90, // Kurangi jika masih overflow
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
+                            ),
+                    ),
                   ),
                 ),
-              ],
-            ),
             SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
