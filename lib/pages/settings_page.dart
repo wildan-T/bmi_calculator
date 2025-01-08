@@ -2,15 +2,53 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:bmi_calculator/controllers/theme_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
 
+class LanguageService {
+  static const String _languageKey = 'selected_language';
+
+  static Future<void> saveLanguage(String language) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_languageKey, language);
+  }
+
+  static Future<String> loadLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_languageKey) ?? 'English';
+  }
+}
+
 class _SettingsPageState extends State<SettingsPage> {
   final ThemeController themeController = Get.put(ThemeController());
   RxString _language = 'English'.obs;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLanguage();
+  }
+
+  Future<void> _loadLanguage() async {
+    final savedLanguage = await LanguageService.loadLanguage();
+    setState(() {
+      _language.value = savedLanguage;
+    });
+    final languageCode = savedLanguage == 'English' ? 'gb' : 'id';
+    Get.updateLocale(Locale(languageCode));
+  }
+
+  void _onLanguageChanged(String language, String code) async {
+    setState(() {
+      _language.value = language;
+    });
+    await LanguageService.saveLanguage(language);
+    Get.updateLocale(Locale(code));
+  }
 
   void _showLanguageDialog() {
     showDialog(
@@ -49,10 +87,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget _buildLanguageItem(String flagPath, String name, String code) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          _language.value = name;
-        });
-        Get.updateLocale(Locale(code));
+        _onLanguageChanged(name, code);
         Navigator.pop(context);
       },
       child: Column(
