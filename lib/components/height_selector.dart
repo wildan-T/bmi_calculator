@@ -43,7 +43,7 @@ class HeightSelector extends StatelessWidget {
                 () => SfSlider.vertical(
                   min: 0,
                   max: 260,
-                  value: bmiController.height.value,
+                  value: bmiController.height.value.toDouble(),
                   interval: 20,
                   showTicks: true,
                   showLabels: true,
