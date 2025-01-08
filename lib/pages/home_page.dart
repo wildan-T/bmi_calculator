@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                     "Welcome",
                     style: TextStyle(
                       fontSize: 28,
-                      color: Colors.grey,
+                      color:Theme.of(context).colorScheme.onSecondaryContainer,
                     ),
                   )
                 ],
@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 34,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color:  Theme.of(context).colorScheme.onSurface,
                     ),
                   )
                 ],

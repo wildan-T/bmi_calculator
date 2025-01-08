@@ -35,7 +35,7 @@ class _WeightSelectorState extends State<WeightSelector> {
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.primaryContainer,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.2),
@@ -55,7 +55,7 @@ class _WeightSelectorState extends State<WeightSelector> {
                   "Weight (Kg)",
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.grey,
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,  
                   ),
                 ),
               ],
@@ -106,8 +106,6 @@ class _WeightSelectorState extends State<WeightSelector> {
                     ),
                   ),
                 ),
-              ],
-            ),
             SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
