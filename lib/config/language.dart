@@ -24,7 +24,7 @@ class Languages extends Translations {
           'result1': "Your BMI indicates that your weight is in a category :",
           'result2': "A normal weight range for your height is :",
           'result3':
-              "Maintaining a healthy weight can help reduce the risk of chronic diseases associated with overweight and obesity.",
+              "Maintaining a healthy weight can help reduce the risk of chronic diseases associated with obesity.",
           'cek2': "Let's Check Again",
           'language': "Language",
           'darkMode': "Dark Mode",
@@ -39,8 +39,8 @@ class Languages extends Translations {
           'bmiCalculator': "Kalkulator BMI",
           'deskripsi':
               "Jaga berat badan ideal adalah kunci untuk hidup sehat, energik, dan percaya diri. Mari ambil langkah kecil hari ini dengan aplikasi BMI.",
-          'weight': "Berat Badan (Kg)",
-          'height': "Tinggi Badan (Cm)",
+          'weight': "Berat (Kg)",
+          'height': "Tinggi (Cm)",
           'check': "Periksa",
           'invalid': "Gagal",
           'remaks': "Berat badan tidak boleh kurang dari 0",
@@ -50,12 +50,11 @@ class Languages extends Translations {
           'overweight': "KELEBIHAN BERAT BADAN",
           'obese': "OBESITAS",
           'extremelyObese': "OBESITAS EKSTREM",
-          'result1':
-              "BMI Anda menunjukkan bahwa berat badan Anda berada dalam kategori :",
+          'result1': "BMI Anda menunjukkan kategori :",
           'result2':
               "Rentang berat badan normal untuk tinggi badan Anda adalah :",
           'result3':
-              "Menjaga berat badan yang sehat dapat membantu mengurangi risiko penyakit kronis yang terkait dengan kelebihan berat badan dan obesitas.",
+              "Menjaga berat badan yang sehat dapat membantu mengurangi risiko penyakit kronis yang terkait dengan obesitas.",
           'cek2': "Periksa Lagi",
           'language': "Bahasa",
           'darkMode': "Mode Gelap",

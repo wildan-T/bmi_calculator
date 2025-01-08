@@ -44,7 +44,7 @@ class ResultPage extends StatelessWidget {
                         bmiController.BMIstatus.value, // Deskripsi
                         style: TextStyle(
                             color: bmiController.colorStatus.value,
-                            fontSize: 30,
+                            fontSize: 23,
                             height: 2,
                             fontWeight: FontWeight.bold),
                       ),
