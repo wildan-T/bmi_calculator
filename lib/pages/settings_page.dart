@@ -52,6 +52,30 @@ class _SettingsPageState extends State<SettingsPage> {
                       color: Colors.grey, // Warna garis
                       thickness: 1, // Ketebalan garis
                     ),
+                    SizedBox(height: 5),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Dark Mode',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        Obx(() => Transform.scale(
+                              scale: 0.7,
+                              child: Switch(
+                                activeTrackColor: Colors.grey.shade300,
+                                activeColor: const Color(0xff309CFF),
+                                value: themeController.isDark.value,
+                                onChanged: (val) {
+                                  themeController.changeTheme();
+                                },
+                              ),
+                            )),
+                      ],
+                    ),
                   ],
                 ),
               ),
