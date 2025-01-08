@@ -80,7 +80,7 @@ class _WeightSelectorState extends State<WeightSelector> {
                                 controller: _textEditingController,
                                 keyboardType: TextInputType.number,
                                 style: TextStyle(
-                                  fontSize: 70,
+                                  fontSize: 55,
                                   fontWeight: FontWeight.bold,
                                   color:
                                       Theme.of(context).colorScheme.onSurface,
@@ -99,7 +99,7 @@ class _WeightSelectorState extends State<WeightSelector> {
                           : Text(
                               "${bmiController.weight.value}",
                               style: TextStyle(
-                                fontSize: 90,
+                                fontSize: 70,
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.onSurface,
                               ),
