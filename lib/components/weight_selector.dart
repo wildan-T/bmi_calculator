@@ -64,12 +64,46 @@ class _WeightSelectorState extends State<WeightSelector> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "60",
-                  style: TextStyle(
-                    fontSize: 90, // Kurangi jika masih overflow
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                Flexible(
+                  child: Obx(
+                    () => GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isEditing = true;
+                        });
+                      },
+                      child: isEditing
+                          ? SizedBox(
+                              width: 100,
+                              child: TextField(
+                                controller: _textEditingController,
+                                keyboardType: TextInputType.number,
+                                style: TextStyle(
+                                  fontSize: 70, // Kurangi ukuran font
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                ),
+                                onSubmitted: (value) {
+                                  final newWeight = int.tryParse(value);
+                                  if (newWeight != null) {
+                                    bmiController.weight.value = newWeight;
+                                  }
+                                  setState(() {
+                                    isEditing = false;
+                                  });
+                                },
+                              ),
+                            )
+                          : Text(
+                              "${bmiController.weight.value}",
+                              style: TextStyle(
+                                fontSize: 90, // Kurangi jika masih overflow
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
+                            ),
+                    ),
                   ),
                 ),
               ],

@@ -41,7 +41,7 @@ class ResultPage extends StatelessWidget {
                     () => CircularPercentIndicator(
                       animationDuration: 1100,
                       footer: Text(
-                        "${bmiController.BMIstatus.value}", // Deskripsi
+                        bmiController.BMIstatus.value, // Deskripsi
                         style: TextStyle(
                             color: bmiController.colorStatus.value,
                             fontSize: 30,
@@ -54,7 +54,7 @@ class ResultPage extends StatelessWidget {
                       circularStrokeCap: CircularStrokeCap.round,
                       percent: bmiController.tempBMI.value / 100,
                       center: Text(
-                        "${bmiController.BMI.value}%",
+                        bmiController.BMI.value,
                         style: TextStyle(
                             color: bmiController.colorStatus.value,
                             fontSize: 70,
@@ -88,7 +88,7 @@ class ResultPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Your BMI is ${bmiController.BMI.value}%, which indicates your weight is in the ${bmiController.BMIstatus.value} category for adults of your height.",
+                        "Your BMI is ${bmiController.BMI.value}, which indicates your weight is in the ${bmiController.BMIstatus.value} category for adults of your height.",
                         style: TextStyle(fontSize: 15),
                       ),
                       SizedBox(height: 10),
