@@ -9,7 +9,7 @@ class Languages extends Translations {
           'welcome': "Welcome",
           'bmiCalculator': "BMI Calculator",
           'deskripsi':
-              "Maintain your body's balance, because having an ideal weight is the key to living a healthy, energetic, and confident life. Let's take small steps today with the BMI app.",
+              "Maintain your ideal weight is the key to living a healthy, energetic, and confident life. Let's take small steps today with the BMI app.",
           'weight': "Weight (Kg)",
           'height': "Height (Cm)",
           'check': "Check",
@@ -38,7 +38,7 @@ class Languages extends Translations {
           'welcome': "Selamat Datang",
           'bmiCalculator': "Kalkulator BMI",
           'deskripsi':
-              "Jaga keseimbangan tubuh anda, karena memiliki berat badan ideal adalah kunci untuk hidup sehat, energik, dan percaya diri. Mari ambil langkah kecil hari ini dengan aplikasi BMI.",
+              "Jaga berat badan ideal adalah kunci untuk hidup sehat, energik, dan percaya diri. Mari ambil langkah kecil hari ini dengan aplikasi BMI.",
           'weight': "Berat Badan (Kg)",
           'height': "Tinggi Badan (Cm)",
           'check': "Periksa",
