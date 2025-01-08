@@ -18,8 +18,9 @@ class _WeightSelectorState extends State<WeightSelector> {
   @override
   void initState() {
     super.initState();
-    _textEditingController =
-        TextEditingController(text: bmiController.weight.value.toString());
+    _textEditingController = TextEditingController(
+      text: bmiController.weight.value.toString(),
+    );
   }
 
   @override
@@ -55,7 +56,7 @@ class _WeightSelectorState extends State<WeightSelector> {
                   "Weight (Kg)",
                   style: TextStyle(
                     fontSize: 18,
-                    color: Theme.of(context).colorScheme.onSecondaryContainer,  
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
                   ),
                 ),
               ],
@@ -79,7 +80,7 @@ class _WeightSelectorState extends State<WeightSelector> {
                                 controller: _textEditingController,
                                 keyboardType: TextInputType.number,
                                 style: TextStyle(
-                                  fontSize: 70, // Kurangi ukuran font
+                                  fontSize: 70,
                                   fontWeight: FontWeight.bold,
                                   color:
                                       Theme.of(context).colorScheme.onSurface,
@@ -98,7 +99,7 @@ class _WeightSelectorState extends State<WeightSelector> {
                           : Text(
                               "${bmiController.weight.value}",
                               style: TextStyle(
-                                fontSize: 90, // Kurangi jika masih overflow
+                                fontSize: 90,
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.onSurface,
                               ),
@@ -106,6 +107,8 @@ class _WeightSelectorState extends State<WeightSelector> {
                     ),
                   ),
                 ),
+              ],
+            ),
             SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
