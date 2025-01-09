@@ -14,7 +14,6 @@ class BMIController extends GetxController {
     var Hmeter = height / 100;
     tempBMI.value = weight / (Hmeter * Hmeter);
     BMI.value = tempBMI.toStringAsFixed(1);
-    tempBMI.value = double.parse(BMI.value);
     findStatus();
     calculateRecommendedWeight();
     print(BMI);
@@ -50,7 +49,7 @@ class BMIController extends GetxController {
       // colorStatus.value = Color(0xffFEB200);
       colorStatus.value = Color(0xffFFEE58);
     } //25.0 sampai 29.9
-    else if (tempBMI.value >= 30.5 && tempBMI.value <= 34.9) {
+    else if (tempBMI.value >= 30.0 && tempBMI.value <= 34.9) {
       BMIstatus.value = "obese".tr;
       // colorStatus.value = Color(0xffBF6300);
       colorStatus.value = Color(0xffEF5350);

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:bmi_calculator/components/button3.dart';
 import 'package:bmi_calculator/controllers/bmi_controller.dart';
+import 'dart:math';
 
 class ResultPage extends StatelessWidget {
   ResultPage({super.key});
@@ -36,35 +37,39 @@ class ResultPage extends StatelessWidget {
               SizedBox(height: 5),
               Container(
                 height: 340,
-                child: SizedBox(
-                  child: Obx(
-                    () => CircularPercentIndicator(
+                child: Obx(
+                  () {
+                    // Membatasi nilai persen agar tidak melebihi 1.0
+                    double percent = min(bmiController.tempBMI.value / 35, 1.0);
+                    return CircularPercentIndicator(
                       animationDuration: 1100,
                       footer: Text(
                         bmiController.BMIstatus.value, // Deskripsi
                         style: TextStyle(
-                            color: bmiController.colorStatus.value,
-                            fontSize: 23,
-                            height: 2,
-                            fontWeight: FontWeight.bold),
+                          color: bmiController.colorStatus.value,
+                          fontSize: 23,
+                          height: 2,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       radius: 140,
                       lineWidth: 35,
                       animation: true,
                       circularStrokeCap: CircularStrokeCap.round,
-                      percent: bmiController.tempBMI.value / 100,
+                      percent: percent,
                       center: Text(
                         bmiController.BMI.value,
                         style: TextStyle(
-                            color: bmiController.colorStatus.value,
-                            fontSize: 70,
-                            fontWeight: FontWeight.bold),
+                          color: bmiController.colorStatus.value,
+                          fontSize: 70,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       progressColor: bmiController.colorStatus.value,
                       backgroundColor:
                           bmiController.colorStatus.value.withOpacity(0.2),
-                    ),
-                  ),
+                    );
+                  },
                 ),
               ),
               Container(
@@ -74,11 +79,10 @@ class ResultPage extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black
-                          .withOpacity(0.2), // Warna bayangan dengan kelegapan
-                      spreadRadius:
-                          2, // Menentukan seberapa jauh bayangan menyebar
-                      blurRadius: 5, // Seberapa kabur bayangan
-                      offset: Offset(2, 4), // Posisi bayangan (x, y)
+                          .withOpacity(0.2), // Shadow color and opacity
+                      spreadRadius: 2, // Spread radius of the shadow
+                      blurRadius: 5, // Blur radius
+                      offset: Offset(2, 4), // Position of the shadow
                     ),
                   ],
                 ),
