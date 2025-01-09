@@ -39,14 +39,17 @@ class _SettingsPageState extends State<SettingsPage> {
       _language.value = savedLanguage;
     });
     final languageCode = savedLanguage == 'English' ? 'gb' : 'id';
-    Get.updateLocale(Locale(languageCode));
+    if (Get.locale?.languageCode != languageCode) {
+      Get.updateLocale(Locale(languageCode));
+    }
   }
 
   void _onLanguageChanged(String language, String code) async {
     setState(() {
       _language.value = language;
     });
-    await LanguageService.saveLanguage(language);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('selected_language', language);
     Get.updateLocale(Locale(code));
   }
 
